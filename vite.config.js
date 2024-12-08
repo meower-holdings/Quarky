@@ -20,7 +20,10 @@ export default defineConfig({
               excludeReplayIframe: true,
               excludeReplayShadowDom: true
           },
-          reactComponentAnnotation: { enabled: true }
+          reactComponentAnnotation: { enabled: true },
+          sourcemaps: {
+              filesToDeleteAfterUpload: "**/*.js.map"
+          }
       })
   ],
   test: {

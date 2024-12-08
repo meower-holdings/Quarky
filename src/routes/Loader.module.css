@@ -38,3 +38,106 @@
         transform: rotate(360deg);
     }
 }
+
+.loadingBar {
+    background-color: transparent;
+    width: min(25em, 75vw);
+    height: 2.5em;
+    transform: scaleY(-1) perspective(250px) rotate3d(-1, 0, 0, 65deg);
+
+    border-image: linear-gradient(to top, var(--pride-linear)) 1;
+    border-width: 10px;
+    border-style: solid;
+}
+.loadingBarStretcher {
+    background: linear-gradient(to top, var(--pride-linear));
+    height: 100%;
+    transition: all 500ms;
+}
+.loadingBarWrapper {
+    position: relative;
+}
+.loadingBarImage {
+    position: absolute;
+    z-index: 1;
+    bottom: 2.5em;
+    transform: translateX(-40px);
+    transition: all 500ms;
+}
+.loadingBarText {
+    font-size: small;
+}
+
+.pippiless .loadingBar {
+    animation: loadingBarThrowsPippi 1s forwards;
+}
+.pippiless .loadingBarImage {
+    animation: pippiFalls 0.5s forwards ease-in;
+}
+@keyframes pippiFalls {
+    0% {
+        transform: translateX(-40px);
+    }
+    100% {
+        transform: translateX(0px) translateY(200px) rotateZ(25deg);
+        opacity: 0;
+    }
+}
+@keyframes loadingBarThrowsPippi {
+    0% {
+        transform: scaleY(-1) perspective(250px) rotate3d(-1, 0, 0, 65deg);
+    }
+    40% {
+        transform: scaleY(-1) perspective(250px) rotate3d(-1, 0, 0, 35deg);
+    }
+    70% {
+        transform: scaleY(-1) perspective(250px) rotate3d(-1, 0, 0, 65deg);
+    }
+}
+@keyframes w3shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+.logoEffectWrap {
+    width: fit-content;
+    cursor: pointer;
+}
+.logoEffectWrap object:global(#preloadlogo) {
+    transition: transform 200ms;
+}
+.logoEffectWrap.stabbed {
+    animation: w3shake 0.2s;
+}
+.hitsplats {
+    user-select: none;
+}
+.hitsplat {
+    image-rendering: pixelated;
+    animation: floatAway 1s forwards ease-in;
+
+    z-index: 1;
+    pointer-events: none;
+}
+@keyframes floatAway {
+    0% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+}
